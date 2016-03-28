@@ -4,7 +4,7 @@
 
 ## AnyKernel setup
 # EDIFY properties
-kernel.string=Nebula Kernel Rev12.3_LP By Eliminater74
+kernel.string=N2E 1.0.0 with Eliminater74 and LGRN shit included
 do.devicecheck=0
 do.initd=1
 do.modules=0

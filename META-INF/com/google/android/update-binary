@@ -58,7 +58,7 @@ ui_print "-          AOSP-Custom Kernel           -";
 ui_print "-       Created By Eliminater74         -";
 ui_print "-       eliminater74@gmail.com          -";
 ui_print "-                                       -";
-ui_print "-     UKM Synapse Scrits Included       -";
+ui_print "-          LGRN Shit Included           -";
 ui_print "-----------------------------------------";
 
 ui_print "$(file_getprop /tmp/anykernel/anykernel.sh kernel.string)";
@@ -126,6 +126,6 @@ umount /data;
 ui_print "*****************************************";
 ui_print "*         This Device Is Now,           *";
 ui_print "*               POWERED,                *";
-ui_print "*              By Nebula                *";
+ui_print "*          By Nebula, Nigguh            *";
 ui_print "*****************************************";
 
