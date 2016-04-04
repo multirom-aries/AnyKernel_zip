@@ -1,6 +1,7 @@
 # AnyKernel2 Ramdisk Mod Script
 # osm0sis @ xda-developers
 # Mod 4 LG G3 By Eliminater74
+# Mod 4 Nubia Z9 Mini(NX511J) By sndnvaps
 
 ## AnyKernel setup
 # EDIFY properties
@@ -226,8 +227,8 @@ dump_boot;
 ## begin ramdisk changes ##
 
 # insert initd scripts
-cp -fp $patch/init.d/* $initd
-chmod -R 766 $initd
+#cp -fp $patch/init.d/* $initd
+#chmod -R 766 $initd
 
 # mpdecsion binary
 #mv $bindir/mpdecision-rm $bindir/mpdecision

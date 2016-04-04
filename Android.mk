@@ -33,9 +33,10 @@ $(ANYKERNEL_ZIP_TARGET): bootimage
 	if [ -f $(ak_2nd_kernel_bianry) ]; then cp -a $(ak_2nk_kernel_binary) $(ANYKERNEL_INS_DIR)/zImage; fi;
 	if [ -f $(dtbimg) ]; then  cp -a $(dtbimg) $(ANYKERNEL_INS_DIR)/dt.img; fi;
 	if [ -d $(system_module) ]; then  cp -rpa $(system_module) $(system_module_ins_path)/../; fi;
-	rm -f $(ANYKERNEL_ZIP_TARGET).zip $(ANYKERNEL_ZIP_TARGET)-unsigned.zip $(TARGET_DEVICE)-$(ANYKERNEL_ZIP_TARGET).zip
+	rm -f $(ANYKERNEL_ZIP_TARGET).zip $(ANYKERNEL_ZIP_TARGET)-unsigned.zip
 	cd $(ANYKERNEL_INS_DIR) && zip -qr ../$(notdir $@)-unsigned.zip *
 	java -jar $(HOST_OUT_JAVA_LIBRARIES)/signapk.jar $(DEFAULT_SYSTEM_DEV_CERTIFICATE).x509.pem $(DEFAULT_SYSTEM_DEV_CERTIFICATE).pk8 $(ANYKERNEL_ZIP_TARGET)-unsigned.zip $(ANYKERNEL_ZIP_TARGET).zip
+	$(ak_install_zip_path)/../rename_zip.sh $(ANYKERNEL_ZIP_TARGET) $(TARGET_DEVICE) $(PWD)/$(ak_install_zip_path)/../version.h
 	@echo ----- Made AnyKernel ZIP installer -------- $@.zip
 
 .PHONY: anykernel_zip
