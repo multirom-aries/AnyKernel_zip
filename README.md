@@ -1,7 +1,7 @@
 AnyKernel2 - Flashable Zip Template for Kernel Releases with Ramdisk Modifications
 by osm0sis @ xda-developers
 
-Genera anykernel.zip by sndnvaps<sndnvaps@gmail.com>
+Generate anykernel.zip by sndnvaps `<sndnvaps@gmail.com>`
 
 "AnyKernel is a template for an update.zip that can apply any kernel to any ROM, regardless of ramdisk." - Koush
 
