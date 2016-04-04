@@ -1,7 +1,0 @@
-#!/system/bin/sh
-
-su
-stop mpdecision
-
-echo "interactive" > /sys/devices/system/cpu/cpu0/scaling_governor
-echo "row" > /sys/block/mmcblk0/queue/scheduler

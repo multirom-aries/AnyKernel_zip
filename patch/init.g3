@@ -1,5 +1,0 @@
-service uci /sbin/uci
-	class late_start
-	user root
-	group root
-	oneshot
