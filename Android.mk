@@ -15,7 +15,7 @@ system_module_ins_path := $(ANYKERNEL_INS_DIR)/system/lib/modules
 
 
 
-$(ANYKERNEL_ZIP_TARGET): bootimage
+$(ANYKERNEL_ZIP_TARGET): signapk bootimage
 	@echo
 	@echo
 	@echo "    * Build AnyKernel.zip for" $(TARGET_DEVICE)
