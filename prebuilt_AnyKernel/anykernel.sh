@@ -5,15 +5,15 @@
 
 ## AnyKernel setup
 # EDIFY properties
-kernel.string=Nubia Z9 Mini Kernel Rev1.0 By sndnvaps
-do.devicecheck=0
-do.initd=0
-do.modules=1
-do.cleanup=1
-device.name1=NX511J
-device.name2=nx511j
-device.name3=nubia
-device.name4=nubia Z9 mini
+#kernel.string=Nubia Z9 Mini Kernel Rev1.0 By sndnvaps
+#do.devicecheck=0
+#do.initd=0
+#do.modules=1
+#do.cleanup=1
+#device.name1=NX511J
+#device.name2=nx511j
+#device.name3=nubia
+#device.name4=nubia Z9 mini
 #device.name5=
 
 # shell variables
@@ -100,13 +100,13 @@ write_boot() {
   elif [ `wc -c < /tmp/anykernel/boot-new.img` -gt `wc -c < /tmp/anykernel/boot.img` ]; then
     ui_print " "; ui_print "New image larger than boot partition. Aborting..."; exit 1;
   fi;
-  if [ -f "/data/custom_boot_image_patch.sh" ]; then
-    ash /data/custom_boot_image_patch.sh /tmp/anykernel/boot-new.img;
-    if [ $? != 0 ]; then
-      ui_print " "; ui_print "User script execution failed. Aborting..."; exit 1;
-    fi;
-  fi;
-  
+
+   if [ -f "/tmp/anykernel/boot-new.img" ]; then
+      dd if=/tmp/anykernel/boot-new.img of=$block bs=1M;
+     if [ $? != 0 ]; then
+       ui_print " "; ui_print "Update image failed. Aborting..."; exit 1;
+     fi;
+   fi;
 }
 
 # backup_file <file>
