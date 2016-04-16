@@ -13,14 +13,22 @@ A working script based on DirtyV Kernel for Galaxy Nexus (tuna) is included for 
 // Properties / Variables
 
 kernel.string=KernelName by YourName @ xda-developers
+
+
+
 do.devicecheck=1
 do.initd=1
 do.modules=1
 do.cleanup=1
-device.name1=maguro
-device.name2=toro
-device.name3=toroplus
-block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;
+#device.name[1-3] now pick up from BoardConfig.mk 
+
+device.name1=
+device.name2=
+device.name3=
+
+# boot_block now define in BoardConfig.mk 
+
+block=
 
 do.devicecheck=1 specified requires at least device.name1 to be present. This should match ro.product.device or ro.build.product for your device. There is support for up to 5 device.name# properties.
 
@@ -77,8 +85,8 @@ Have fun!
 # How to build anykernel.zip
 ```
 	$cd $(TOP_ANDROID_SRC)
-	$git clone https://github.com/nx511j-multirom/NX511J-AnyKernel.git -b master external/anykernel
-	$make you change to compat you device (modified external/anykernel/prebuilt_AnyKernel/anykernel.cfg && anykernel.sh)
+	$git clone https://github.com/nx511j-multirom/AnyKernel_zip.git -b master external/anykernel
+	$set up AK_BOOT_BLOCK in BoardConfig.mk 
 	$source build/envsetup.sh
 	$lunch cm_DEVICENAME-eng #(replace DEVICENAME with you own specise,such as `aries,hammerhead`)
 	$make anykernel_zip 

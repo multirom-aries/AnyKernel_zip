@@ -14,6 +14,20 @@ ANYKERNEL_INS_DIR := $(PRODUCT_OUT)/anykernel_installer
 system_module_ins_path := $(ANYKERNEL_INS_DIR)/system/lib/modules
 
 
+ifeq ($(AK_BOOT_BLOCK),)
+    $(warning ****************************************************************************)
+    $(warning * AK_BOOT_BLOCK is not valid: '$(AK_BOOT_BLOCK)')
+    $(warning * Please set up AK_BOOT_BLOCK In you BootConfig.mk .)
+    $(warning * AK_BOOT_BLOCK is like :)
+    $(warning * AK_BOOT_BLOCK := \/dev\/block\/platform\/msm_sdcc.1\/by-name\/boot )
+    $(warning * You can find it in fstab.* from device .)
+    $(warning ****************************************************************************)
+    $(error stopping)
+else
+
+boot_block := $(AK_BOOT_BLOCK)
+
+endif
 
 $(ANYKERNEL_ZIP_TARGET): signapk bootimage
 	@echo
@@ -35,6 +49,9 @@ $(ANYKERNEL_ZIP_TARGET): signapk bootimage
 	sed -i 's/device.name2=/device.name2=$(PRODUCT_BRAND)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
 	sed -i 's/device.name3=/device.name3=$(TARGET_PRODUCT)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
 	sed -i 's/device.name4=/device.name4=$(PRODUCT_MODEL)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
+	fi;
+	if [ -f $(ANYKERNEL_INS_DIR)/anykernel.sh ]; then \
+	sed -i 's/block=/block=$(AK_BOOT_BLOCK);/' $(ANYKERNEL_INS_DIR)/anykernel.sh; \
 	fi;
 	if [ -f $(ak_kernel_binary) ]; then cp -a $(ak_kernel_binary) $(ANYKERNEL_INS_DIR)/kernel; fi;
 	if [ -f $(ak_2nd_kernel_bianry) ]; then cp -a $(ak_2nk_kernel_binary) $(ANYKERNEL_INS_DIR)/zImage; fi;

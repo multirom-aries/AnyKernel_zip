@@ -4,20 +4,11 @@
 # Mod 4 Nubia Z9 Mini(NX511J) By sndnvaps
 
 ## AnyKernel setup
-# EDIFY properties
-#kernel.string=Nubia Z9 Mini Kernel Rev1.0 By sndnvaps
-#do.devicecheck=0
-#do.initd=0
-#do.modules=1
-#do.cleanup=1
-#device.name1=NX511J
-#device.name2=nx511j
-#device.name3=nubia
-#device.name4=nubia Z9 mini
-#device.name5=
 
 # shell variables
-block=/dev/block/bootdevice/by-name/boot;
+#boot_block define in the BoardConfig.mk
+
+block=
 
 ## end setup
 
