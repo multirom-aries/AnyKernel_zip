@@ -29,6 +29,13 @@ $(ANYKERNEL_ZIP_TARGET): signapk bootimage
 	mkdir -p $(ANYKERNEL_INS_DIR)
 
 	cp -a $(ak_install_zip_path)/* $(ANYKERNEL_INS_DIR)/
+	if [ -f $(ANYKERNEL_INS_DIR)/anykernel.cfg ]; then \
+	sed -i 's/kernel.string=/kernel.string=Anykernel\tfor\t$(TARGET_DEVICE)\tBy\tsndnvaps/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
+	sed -i 's/device.name1=/device.name1=$(TARGET_DEVICE)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
+	sed -i 's/device.name2=/device.name2=$(PRODUCT_BRAND)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
+	sed -i 's/device.name3=/device.name3=$(TARGET_PRODUCT)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
+	sed -i 's/device.name4=/device.name4=$(PRODUCT_MODEL)/' $(ANYKERNEL_INS_DIR)/anykernel.cfg; \
+	fi;
 	if [ -f $(ak_kernel_binary) ]; then cp -a $(ak_kernel_binary) $(ANYKERNEL_INS_DIR)/kernel; fi;
 	if [ -f $(ak_2nd_kernel_bianry) ]; then cp -a $(ak_2nk_kernel_binary) $(ANYKERNEL_INS_DIR)/zImage; fi;
 	if [ -f $(dtbimg) ]; then  cp -a $(dtbimg) $(ANYKERNEL_INS_DIR)/dt.img; fi;
